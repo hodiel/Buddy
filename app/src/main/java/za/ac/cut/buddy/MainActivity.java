@@ -15,7 +15,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -31,7 +30,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -55,11 +53,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
         actionBar = getActionBar();
         loadBuddy(file_name);
         loadProfile();
-        String[] buddyNames = new String[]{"Hodiel", "Yahneev", "Nodiel", "Nakhoom", "Tsadeekyahoo",
-                "Ananyah", "Kovedel", "Matsil", "Hallelyah", "Yehalel", "Ben-Khesed", "Uriel", "Avishamah"};
-        ArrayList<String> buddies = new ArrayList<>();
-        Collections.addAll(buddies, buddyNames);
-        lvBuddies.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, buddies));
+
+        ArrayList<CustomFriend> buddies = new ArrayList();
+        buddies.add(new CustomFriend("Amo", 15, "Male"));
+        buddies.add(new CustomFriend("Bonang", 15, "Female"));
+        buddies.add(new CustomFriend("Celiwe", 15, "Female"));
+        buddies.add(new CustomFriend("Dudu", 15, "Female"));
+        buddies.add(new CustomFriend("Ema", 15, "Female"));
+        buddies.add(new CustomFriend("Filane", 15, "Male"));
+        buddies.add(new CustomFriend("Gomolemo", 15, "Male"));
+        buddies.add(new CustomFriend("Holi", 15, "Male"));
+        buddies.add(new CustomFriend("Izwe", 15, "Male"));
+        buddies.add(new CustomFriend("Jomo", 15, "Male"));
+        buddies.add(new CustomFriend("Katleho", 15, "Female"));
+        buddies.add(new CustomFriend("Mpho", 15, "Male"));
+        buddies.add(new CustomFriend("Nomi", 15, "Female"));
+        lvBuddies.setAdapter(new CustomFriendAdapter(this, buddies));
 
     }
 
@@ -264,10 +273,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = context.getLayoutInflater();
             convertView = inflater.inflate(R.layout.custom_friend, null);
-            TextView tvName = (TextView)convertView.findViewById(R.id.tv_name);
-            TextView tvGender = (TextView)convertView.findViewById(R.id.tv_gender);
-            TextView tvAge = (TextView)convertView.findViewById(R.id.tv_age);
-            return null;
+
+            TextView tvName = (TextView) convertView.findViewById(R.id.tv_name);
+            TextView tvGender = (TextView) convertView.findViewById(R.id.tv_gender);
+            TextView tvAge = (TextView) convertView.findViewById(R.id.tv_age);
+
+            CustomFriend cF = getItem(position);
+            tvName.setText("Name: " + cF.getFriendName());
+            tvGender.setText("Gender: " + cF.getFriendGender());
+            tvAge.setText("Age: " + cF.getFriendAge());
+
+            return convertView;
         }
     }
 }
