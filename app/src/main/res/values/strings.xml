@@ -18,8 +18,9 @@
     <string name="hint_phone">(enter phone number)</string>
     <string name="hint_email">(enter email address)</string>
     <string name="add_new">Add Buddy</string>
-    <string name="view_buddy">View Buddy Info</string>
+    <string name="view_buddy">View Buddy</string>
     <string name="search_buddy">Search Buddy</string>
+    <string name="profile">Create Profile</string>
 
     <array name="group_items">
         <item>Personal</item>
