@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/add_new"
+        android:icon="@drawable/ic_add"
+        android:orderInCategory="100"
+        android:title="@string/add_new"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/view_buddy"
+        android:orderInCategory="101"
+        android:title="@string/view_buddy"
+        app:showAsAction="collapseActionView" />
+    <item
+        android:id="@+id/search_buddy"
+        android:orderInCategory="102"
+        android:title="@string/search_buddy"
+        app:showAsAction="collapseActionView" />
+</menu>
